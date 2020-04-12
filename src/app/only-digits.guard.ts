@@ -20,7 +20,14 @@ export class OnlyDigitsGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log("[OnlyDigitsGuard]", "canActivate", next.params.id);
+    let childId = null;
+    let child = state.root.children[0];
+    while (!childId && child) {
+      childId = child.params.id;
+      child = child.children[0];
+    }
+
+    console.log("[OnlyDigitsGuard]", "canActivate", next.params.id, childId);
     return true;
   }
   canActivateChild(
