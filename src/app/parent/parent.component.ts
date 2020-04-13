@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { log } from "../utils";
 
 @Component({
   selector: "app-parent",
@@ -7,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ParentComponent implements OnInit {
   constructor() {
-    console.log("[parent]", "constructing ...");
+    log("[parent]", "constructing ...");
   }
 
   ngOnInit(): void {}

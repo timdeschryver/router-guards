@@ -7,6 +7,7 @@ import {
   UrlTree,
 } from "@angular/router";
 import { Observable } from "rxjs";
+import { log } from "./utils";
 
 @Injectable({
   providedIn: "root",
@@ -27,7 +28,7 @@ export class OnlyDigitsGuard implements CanActivate, CanActivateChild {
       child = child.children[0];
     }
 
-    console.log("[OnlyDigitsGuard]", "canActivate", next.params.id, childId);
+    log("[OnlyDigitsGuard]", "canActivate", next.params.id, childId);
     return true;
   }
   canActivateChild(
@@ -38,7 +39,7 @@ export class OnlyDigitsGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log("[OnlyDigitsGuard]", "canActivateChild", next.params.id);
+    log("[OnlyDigitsGuard]", "canActivateChild", next.params.id);
     return /^\d+$/.test(next.params.id);
   }
 }

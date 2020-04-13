@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
+import { log } from "../utils";
 
 @Component({
   selector: "app-child",
@@ -11,7 +12,7 @@ export class ChildComponent implements OnInit {
   id$ = this.route.params.pipe(map((p) => p.id));
 
   constructor(private route: ActivatedRoute) {
-    console.log("[child]", "constructing ...");
+    log("[child]", "constructing ...");
   }
 
   ngOnInit(): void {}
